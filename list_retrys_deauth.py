@@ -12,9 +12,10 @@ deauth = 0
 retry = 0
 beacon = 0
 all_pkt = 0
+data = 0
 
 def show_pkts(pcts):
-    global deauth, retry, beacon, all_pkt
+    global deauth, retry, beacon, all_pkt, data
     deauth_hit = False
     retry_hit = False
     if pcts.haslayer(Dot11FCS):  #Dot11Elt / RadioTap
@@ -30,13 +31,16 @@ def show_pkts(pcts):
             retry += 1
             retry_hit = True
 
+        if a.mgmt_frame_type == 0:
+            data += 1
+
         all_pkt += 1
 
         #print('Retry: %f, Deauth: %f, Beacon: %f' % (retry/all_pkt, deauth/all_pkt, beacon/all_pkt))
         if deauth_hit:
             print('[!] Deauth: %i' % deauth, end=', ')
         if retry_hit:
-            print('[+] Retry: {0:0.2f}%'.format(retry/all_pkt*100))
+            print('[+] Retry: {0:0.2f}%'.format(retry/data*100))
 
 
 # Run

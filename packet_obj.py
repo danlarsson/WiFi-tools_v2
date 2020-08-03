@@ -120,8 +120,8 @@ class Mypacket(object):
         '''
         try:
             if type == 0:
-                dat = ['Associatio Request', 'Association Response', 'Reassociation Request', 'Reassociation Response', 'Probe Request', 'Probe Response', '', '', 'Beacon', 
-                    'ATIM', 'Disassociation', 'Authentication', 'Deauthentication', 'Action']
+                dat = ['Associatio Request', 'Association Response', 'Reassociation Request', 'Reassociation Response', 'Probe Request',
+                       'Probe Response', '', '', 'Beacon', 'ATIM', 'Disassociation', 'Authentication', 'Deauthentication', 'Action']
                 return(dat[subtype])
             elif type == 1:
                 dat = ['Block ACK Request', 'Block ACK', 'PS-Poll', 'RTS', 'CTS', 'ACK']
